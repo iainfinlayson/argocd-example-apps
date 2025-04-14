@@ -22,18 +22,3 @@ spec:
         name: guestbook-ui
         ports:
         - containerPort: 80
-
-      - name: too-greedy
-        image: busybox
-        command: ["sleep", "3600"]
-        resources:
-          requests:
-            memory: "8Gi"
-            cpu: "4000m"
-
-      - name: memory-hog
-        image: polinux/stress
-        args: ["--vm", "2", "--vm-bytes", "2G", "--timeout", "90s"]
-        resources:
-          limits:
-            memory: "5Gi"
