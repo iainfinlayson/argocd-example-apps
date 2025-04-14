@@ -4,7 +4,7 @@ metadata:
   name: guestbook-ui
   annotations:
     app.komodor.com/app: https://github.com/iainfinlayson/argocd-example-apps
-    app.komodor.com/app.ref: 901450fc1739bb7b7b4ebd2fb69da4005719236d
+    app.komodor.com/app.ref: 1676421d1889c3d31076e82c18379f3736b28966
 spec:
   replicas: 2
   revisionHistoryLimit: 3
@@ -17,7 +17,7 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:does-not-exist
+      - image: gcr.io/heptio-images/ks-guestbook-demo:2.0
         name: guestbook-ui
         ports:
         - containerPort: 80
