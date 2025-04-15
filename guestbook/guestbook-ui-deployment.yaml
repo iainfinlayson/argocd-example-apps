@@ -21,11 +21,4 @@ spec:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         name: guestbook-ui
         ports:
-        - containerPort: 9999
-        readinessProbe:
-          httpGet:
-            path: /fake-path
-            port: 80
-          initialDelaySeconds: 2
-          periodSeconds: 5
-
+        - containerPort: 80
