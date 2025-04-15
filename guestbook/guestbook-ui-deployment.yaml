@@ -21,7 +21,4 @@ spec:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         name: guestbook-ui
         ports:
-        - containerPort: 80
-      - name: crashloop
-        image: busybox
-        command: ["sh", "-c", "exit 1"]
+        - containerPort: 8088
