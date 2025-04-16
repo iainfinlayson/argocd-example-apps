@@ -4,7 +4,7 @@ metadata:
   name: guestbook-ui
   annotations:
     app.komodor.com/app: https://github.com/iainfinlayson/argocd-example-apps
-    app.komodor.com/app.ref: 98dc1eec8f8a5a30c0a5b14f8b1d1b84b44c7aa2
+    app.komodor.com/app.ref: e009df187b58dc3361de5d8683953207107ac372
 spec:
   replicas: 2
   revisionHistoryLimit: 3
@@ -17,23 +17,11 @@ spec:
       labels:
         app: guestbook-ui
     spec:
+      nodeSelector:
+        made.up.label: "true"
       containers:
-      - name: guestbook-ui
-        image: busybox
-        command: ["sh", "-c", "exit 1"]
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        name: guestbook-ui
         ports:
         - containerPort: 80
-      - name: too-greedy
-        image: busybox
-        command: ["sleep", "3600"]
-        resources:
-          requests:
-            memory: "8Gi"
-            cpu: "4000m"
-      - name: memory-hog
-        image: polinux/stress
-        args: ["--vm", "2", "--vm-bytes", "2G", "--timeout", "90s"]
-        resources:
-          limits:
-            memory: "5Gi"
 
