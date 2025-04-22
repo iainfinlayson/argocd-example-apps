@@ -4,7 +4,7 @@ metadata:
   name: guestbook-ui
   annotations:
     app.komodor.com/app: https://github.com/iainfinlayson/argocd-example-apps
-    app.komodor.com/app.ref: 7a4a8dd56a18ef53c088771a899f0ab580eda7de
+    app.komodor.com/app.ref: ce87032cba292f45e28fa992cdc8bddea999a98c
 spec:
   replicas: 2
   revisionHistoryLimit: 3
@@ -18,7 +18,12 @@ spec:
         app: guestbook-ui
     spec:
       nodeSelector:
-        kubernetes.io/hostname: ip-172-31-5-163  # match tainted node
+        kubernetes.io/hostname: ip-172-31-5-163
+      tolerations:
+      - key: "demo"
+        operator: "Equal"
+        value: "chaos"
+        effect: "NoSchedule"
       containers:
       - name: guestbook-ui
         image: gcr.io/heptio-images/ks-guestbook-demo:0.2
