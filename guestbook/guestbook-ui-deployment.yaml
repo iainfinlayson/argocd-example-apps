@@ -4,15 +4,11 @@ metadata:
   name: guestbook-ui
   annotations:
     app.komodor.com/app: https://github.com/iainfinlayson/argocd-example-apps
-    app.komodor.com/app.ref: 287528153340af486de7f1046605d9971eb68821
+    app.komodor.com/app.ref: 0af388afb1cc097beda6823794f8251fa9387814
 spec:
   replicas: 2
   revisionHistoryLimit: 3
-  progressDeadlineSeconds: 10
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 2
+  progressDeadlineSeconds: 15
   selector:
     matchLabels:
       app: guestbook-ui
@@ -22,15 +18,7 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-      - name: guestbook-ui
-        image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        name: guestbook-ui
         ports:
         - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /nope
-            port: 80
-          initialDelaySeconds: 1
-          periodSeconds: 3
-          failureThreshold: 1
-
