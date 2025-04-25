@@ -4,7 +4,7 @@ metadata:
   name: guestbook-ui
   annotations:
     app.komodor.com/app: https://github.com/iainfinlayson/argocd-example-apps
-    app.komodor.com/app.ref: fa8a01f0cada842a08b3eec03728d9f626bd621c
+    app.komodor.com/app.ref: 5095fad59ecc08fdea8ea8edee35a2b77fd7b9ac
 spec:
   replicas: 2
   revisionHistoryLimit: 3
